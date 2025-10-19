@@ -14,9 +14,9 @@
 
 1. **Import close prices** with `yfinance` for 10 assets:  
    `NVDA`, `MSFT`, `AAPL`, `AMZN`, `META`, `AVGO`, `GOOGL`, `TSLA`, `BRK-B`, `WMT`  
-   *(1-day time frame)*
+   *(1-day time frame)*    @cometta interested
 
-2. **Calculate** mean returns and covariance matrix.  
+2. **Calculate** mean returns and covariance matrix.    @cometta interested
 3. **Implement** a **Ledoit–Wolf function** for the covariance matrix.  
 4. **Build the QAOA code** using the 10 assets and set **B = 5**.
 
