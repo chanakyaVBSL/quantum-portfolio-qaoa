@@ -238,4 +238,60 @@ $$
 
 All gates are local (one per qubit):
 
+<p align="center">
+  <img src="X-mixer.png" alt="X-mixer" width="200"/>
+</p>
+
+### Comments
+
+- **Depth and noise:** very low circuit depth; only local single-qubit gates are used.  
+- **Cardinality:** does **not** preserve \( \sum_i x_i \). Even if the system starts in a configuration with weight \( B \), the dynamics can explore states with weights \( B \pm 1, \dots \).  
+  To enforce \( \sum_i x_i = B \) with this mixer, one must add **penalty terms** to the cost Hamiltonian.
+
+---
+
+### Single-layer circuit of the XY-mixer in ring topology (4 qubits)
+
+For the ring topology  
+\( E_M = \{(1,2), (2,3), (3,4), (4,1)\} \),  
+we can **parallelize** the implementation into two sublayers:  
+first act on pairs \((1,2)\) and \((3,4)\) simultaneously,  
+then on pairs \((2,3)\) and \((4,1)\).  
+Each edge is implemented with an \(\mathrm{RXX}(2\beta)\) gate followed by an \(\mathrm{RYY}(2\beta)\) gate:
+
+I NEED TO PUT HEAR AN IMAGE
+
+## Comparison between X-mixer and XY-mixer
+
+- **X-mixer:** allows exploring the entire hypercube of configurations. It is easy to implement (only single-qubit gates), but it does **not** preserve cardinality constraints. To enforce them, additional penalty terms must be added to the cost Hamiltonian.
+- **XY-mixer:** strictly preserves the number of ones. This allows enforcing the cardinality constraint as a symmetry of the dynamics. One needs to prepare a feasible initial state and use two-qubit gates (RXX and RYY), which increases the circuit depth, but the exploration is limited to valid states only.
+
+---
+
+## Conclusion: the cardinality problem
+
+The problem of selecting exactly \( B \) active qubits can be addressed in QAOA in two different ways:
+
+1. **Using the X-mixer:** the basic mixer is employed, which does **not** preserve cardinality, and a penalty term is added to the cost Hamiltonian:
+
+\[
+H_C \;\to\; H_C + \lambda\left(\sum_{i=1}^n x_i - B\right)^2.
+\]
+
+In this case, the full space of \(2^n\) states is explored, but the minimum energy favors configurations with exactly \( B \) ones.
+
+2. **Using the XY-mixer:** a conservative mixer is designed:
+
+\[
+H_M^{(XY)} = \sum_{(i,j)\in E_M} (X_i X_j + Y_i Y_j),
+\]
+
+and the system is initialized in a state with \( B \) ones. The dynamics **always** remains in the feasible subspace, exploring only configurations with \( \sum_i x_i = B \).
+
+---
+
+In this way, the X-mixer offers simplicity and low hardware cost, while the XY-mixer provides stricter control over cardinality constraints. The choice between them depends on the specific problem, the need to enforce exact feasibility, and the technological limitations of the implementation.
+
+
+
 
