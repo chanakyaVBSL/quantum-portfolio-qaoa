@@ -1,5 +1,6 @@
 # Core quantum computing packages# Scientific computing and optimization
 numpy>=2.3.0
+scikit-learn>=1.7.2
 
 # Data manipulation and analysis
 pandas>=2.3.0
@@ -14,5 +15,3 @@ yfinance>=0.2.0
 # Jupyter notebook support
 ipykernel>=6.30.0
 ipython>=9.6.0
-
-
