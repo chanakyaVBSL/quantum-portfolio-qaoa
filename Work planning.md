@@ -1,4 +1,4 @@
-# 🧠 Quantum Portfolio Optimization — October 19–25, 2025
+ # 🧠 Quantum Portfolio Optimization — October 19–25, 2025
 
 ## 📘 Introduction
 **Topic:** Introduction to QAOA and Portfolio Optimization
