@@ -173,5 +173,5 @@ Finally, results from all methods (Brute Force, CVXPY, and QAOA) are compared in
 
 ---
 
-**Project:** Quantum Portfolio Optimization (AQAOA)
+**Project:** Quantum Portfolio Optimization (QAOA)
 **Tools:** Python, Qiskit, CVXPY, NumPy, Matplotlib
