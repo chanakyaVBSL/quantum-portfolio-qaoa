@@ -34,9 +34,9 @@ $$
 
 where:
 
-* (\mu) is the vector of expected returns.
-* (\Sigma) is the covariance matrix.
-* (\lambda) is the risk-aversion coefficient.
+* ($\mu$) is the vector of expected returns.
+* ($\Sigma$) is the covariance matrix.
+* ($\lambda$) is the risk-aversion coefficient.
 
 This objective function is then reformulated as a **Quadratic Unconstrained Binary Optimization (QUBO)** problem:
 
@@ -44,7 +44,7 @@ $$
 H(x) = x^T Q x
 $$
 
-where (Q) encodes both the return and risk terms, suitable for quantum optimization methods.
+where $(Q)$ encodes both the return and risk terms, suitable for quantum optimization methods.
 
 **Key Outputs:**
 
@@ -66,9 +66,7 @@ For $(n)$ assets, all $(2^n)$ combinations are tested to compute their objective
 **Key Outputs:**
 
 * Optimal portfolio configuration.
-* Plot of portfolio return vs. risk.
-
-![Brute Force Results](figures/brute_force_plot.png)
+* Stored results in `.npz` format.
 
 ---
 
@@ -126,7 +124,7 @@ where $| \psi(\gamma, \beta) \rangle$ is the parameterized quantum state.
 
 ## 5. Comparison and Analysis
 
-Finally, results from all methods (Brute Force, CVXPY, and QAOA) are compared in terms of accuracy, computational cost, and solution quality.
+Finally, results from all methods (Brute Force, CVXPY, and QAOA) are compared in terms of accuracy and solution quality.
 
 ### Metrics
 
@@ -135,9 +133,7 @@ Finally, results from all methods (Brute Force, CVXPY, and QAOA) are compared in
 
 **Key Visualizations:**
 
-* Comparative bar plots of performance.
-* Risk vs. return scatter plots.
-
+* Comparative plots of performance.
 
 ![Comparison Chart](figures/comparison.png)
 
@@ -145,15 +141,14 @@ Finally, results from all methods (Brute Force, CVXPY, and QAOA) are compared in
 
 ## Conclusions
 
-* **Brute Force** serves as the exact baseline but scales poorly.
-* **CVXPY** provides efficient and accurate classical approximations and stores reusable results for analysis.
-* **QAOA** demonstrates the potential of quantum optimization for combinatorial portfolio problems, achieving close-to-optimal solutions with fewer resources.
+* **Brute-force:**  
+  Provides the exact optimal solution by exhaustively exploring all possible portfolios. However, it is computationally expensive and scales poorly as the number of assets increases.
 
-Future work includes:
+* **Classical (CVXPY):**  
+  Finds a near-optimal solution much faster using convex optimization. In this case, its result nearly coincides with the brute-force optimum, confirming its accuracy and efficiency as a classical benchmark.
 
-* Running QAOA on real quantum hardware.
-* Exploring hybrid quantum-classical optimization.
-* Extending the model to multi-period or risk-constrained portfolios.
+* **Quantum (QAOA):**  
+  Achieves a feasible but suboptimal portfolio, with a lower expected return than the classical and brute-force results. This reflects current limitations in parameter tuning and circuit depth, though it illustrates the potential of quantum methods for combinatorial optimization.
 
 ---
 
