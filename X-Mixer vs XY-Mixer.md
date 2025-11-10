@@ -215,7 +215,7 @@ $U_M^{(X)}(\beta) = \bigotimes_{i=1}^4 R_X^{(i)}(2\beta).$
 All gates are local (one per qubit):
 
 <p align="center">
-  <img src="X-mixer.png" alt="X-mixer" width="200"/>
+  <img src="figures\X-mixer.png" alt="figures\X-mixer.png" width="200"/>
 </p>
 
 ### Comments
@@ -236,7 +236,7 @@ then on pairs $(2,3)$ and $(4,1)$.
 Each edge is implemented with an $\mathrm{RXX}(2\beta)$ gate followed by an $\mathrm{RYY}(2\beta)$ gate:
 
 <p align="center">
-  <img src="XY-mixer.png" alt="XY-mixer" width="600"/>
+  <img src="figures\XY-mixer.png" alt="figures\XY-mixer.png" width="600"/>
 </p>
 
 ## Comparison between X-mixer and XY-mixer
