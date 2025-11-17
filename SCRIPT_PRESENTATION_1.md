@@ -3,7 +3,7 @@
 ##Team introduction (Briefly mention your team members and their roles)
 Manuel:
 Chanakya:
-Cometta:
+Cheewei:
 Andrés:
 
 ##Project overview -- What problem are you solving? What is your project goals.
