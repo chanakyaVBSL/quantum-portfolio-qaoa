@@ -1,10 +1,10 @@
 ##Script for the presentation
 
 ##Team introduction (Briefly mention your team members and their roles)
-Manuel:
-Chanakya:
-Cheewei:
-Andrés:
+Manuel: Coordinate the project and the QAOA design
+Chanakya: Analyze the algorithmic performance
+Cheewei: Data pipeline and classical baselines
+Andrés: Visualization and structuring our code
 
 ##Project overview -- What problem are you solving? What is your project goals.
 Our goal is to build and benchmark a QAOA-based portfolio selection pipeline that uses an XY mixer to enforce cardinality
