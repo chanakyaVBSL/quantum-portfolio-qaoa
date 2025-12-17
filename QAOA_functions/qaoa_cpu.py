@@ -1,6 +1,6 @@
 # ---------- QUBO -> Ising (Z) ----------
 # x_i = (1 - Z_i)/2 ; x_i x_j = (1 - Z_i - Z_j + Z_iZ_j)/4
-def qubo_to_ising(Q, q):
+def qubo_to_ising(Q, q, n):
     J = np.zeros((n, n))
     h = np.zeros(n)
     const = 0.0
@@ -16,7 +16,7 @@ def qubo_to_ising(Q, q):
         const += (Q[i, i] / 2.0) + (q[i] / 2.0)
     return J, h, const
 
-J, h, const_shift = qubo_to_ising(Q, q)
+# J, h, const_shift = qubo_to_ising(Q, q)
 
 # ---------- Initial state with |x|=B (RANDOM) ----------
 init_idx = rng.choice(n, size=B, replace=False)   # <-- requested change
