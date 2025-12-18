@@ -1,3 +1,4 @@
+from typing import List, Tuple
 import numpy as np
 from qiskit import QuantumCircuit
 from qiskit.circuit import Parameter
@@ -42,7 +43,8 @@ def qubo_to_ising(Q: np.ndarray, q: np.ndarray, n: int):
 
 # ---------- QAOA ansatz with XY mixer (ring) ----------
 
-def build_qaoa_xy(n: int, P: int, J: np.ndarray, h: np.ndarray, init_bits):
+def build_qaoa_xy(n: int, P: int, J: np.ndarray,
+                  h: np.ndarray, init_bits: np.ndarray) -> Tuple[QuantumCircuit, List[Parameter]]:
     """
     Build parameterized QAOA-XY circuit.
 
@@ -58,6 +60,10 @@ def build_qaoa_xy(n: int, P: int, J: np.ndarray, h: np.ndarray, init_bits):
         Local Ising fields.
     init_bits : array-like (n,)
         Initial computational basis state (0/1).
+        
+    Returns:
+        qc: Quantum circuit
+        params: List of Parameter objects
     """
     qc = QuantumCircuit(n, name="QAOA_XY")
 
@@ -93,7 +99,7 @@ def build_qaoa_xy(n: int, P: int, J: np.ndarray, h: np.ndarray, init_bits):
 
 # ---------- Helper Functions ----------
 
-def f_qubo(x: np.ndarray, Q: np.ndarray, q: np.ndarray):
+def f_qubo(x: np.ndarray, Q: np.ndarray, q: np.ndarray) -> float:
     """
     Evaluate QUBO objective function.
 
@@ -123,7 +129,7 @@ def bitstr_from_int(k: int, n: int):
     return np.array(list(np.binary_repr(k, width=n)), dtype=int)
 
 
-def bitarray_from_qiskit_string(s: str):
+def bitarray_from_qiskit_string(s: str) -> np.ndarray:
     """
     Convert Qiskit little-endian bitstring to array.
 
@@ -135,7 +141,7 @@ def bitarray_from_qiskit_string(s: str):
     return np.array(list(s[::-1]), dtype=int)
 
 
-def random_theta(P: int, rng: np.random.Generator):
+def random_theta(P: int, rng: np.random.Generator) -> np.ndarray:
     """
     Generate random initial parameters.
 
@@ -171,6 +177,8 @@ def bind_params(circ: QuantumCircuit, mapping: dict[Parameter, float]):
         except Exception as e:
             raise RuntimeError(f"Could not assign parameters: {e}")
 
+def is_valid(x: np.ndarray, B: int) -> bool:
+    return np.sum(x) == B
 
 # ---------- Exact expectation via statevector ----------
 
