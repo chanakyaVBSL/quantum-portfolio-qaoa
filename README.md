@@ -23,13 +23,13 @@ We begin by defining the problem through historical asset data. The expected ret
 The classical portfolio optimization problem is defined as:
 
 $$
-\max_x ; (\mu^T x - \lambda x^T \Sigma x)
+\max_x \; (\mu^T x - \lambda x^T \Sigma x)
 $$
 
 subject to:
 
 $$
-\sum_i x_i = 1, \quad x_i \in {0, 1}
+\sum_i x_i = 1, \quad x_i \in \{0, 1\}
 $$
 
 where:
@@ -79,7 +79,7 @@ Using the **CVXPY** library, we solve the same problem via convex optimization, 
 CVXPY solves:
 
 $$
-\max_x ; (\mu^T x - \lambda x^T \Sigma x)
+\max_x \; (\mu^T x - \lambda x^T \Sigma x)
 $$
 
 subject to linear or quadratic constraints.
